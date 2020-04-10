@@ -1,0 +1,21 @@
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+server-->browser: spa.js
+
+note over browser:
+POST [{ content: "content of the note", date: "timestamp" }, ...]
+header content type: application/JSON
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+server-->browser: HTTP-status code 201
+
+note over browser:
+browser executes the event handler
+creates new note, adds it to notes list
+and renders notes to display
+end note
